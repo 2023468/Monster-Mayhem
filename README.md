@@ -1,59 +1,34 @@
-Monster Mayhem - Hex Grid Board
-This project is a browser-based hex board game created as part of a student assessment. The primary goal was to develop a 10x10 grid of hexagons with core interactive features, all built using client-side HTML, CSS, and JavaScript
+Monster Mayhem - Hex Grid Chase Game
 
-Features
-Dynamic 10x10 Hexagon Grid: The game board is generated entirely by JavaScript, creating a 10x10 grid of perfectly interlocking hexagons.
+This project is a browser-based hex board game where the goal is to evade a chasing monster. It was built with client-side HTML, CSS, and JavaScript.
 
-Hover Highlighting: When the user's cursor moves over a hexagon, it is highlighted to provide clear visual feedback.
+The game now includes multiple difficulty levels which control the monster's speed, making for a more challenging and replayable experience.
 
-Select & Deselect: Users can click to select a single hexagon, which is highlighted with a distinct color. Clicking the same hexagon again or clicking another tile will deselect it.
+Gameplay
 
-Player Character & Movement (Challenge Task):
+Select Difficulty: Choose "Easy," "Medium," or "Hard" to start the game.
 
-A player token is visually represented on the board.
+Player Control: You are the blue token. Click your token to see available moves highlighted in green.
 
-Clicking the player token enters "move mode," highlighting all valid adjacent tiles.
+Movement: Click a green tile to move.
 
-Clicking a highlighted tile moves the player to that new position.
+Monster AI: After you move, the purple monster will take one or more steps towards you, depending on the difficulty.
 
-Clicking the player again or an invalid tile cancels "move mode."
+Game Over: The game ends when the monster catches you. You can then restart and choose a new difficulty.
 
-How to Run
-Clone the repository to your local machine.
+Key Updates & Features
 
-Open the index.html file in any modern web browser.
+Difficulty Levels: The start screen now allows the player to select a difficulty.
 
-No special setup or dependencies are required.
+Easy: Monster moves 1 space per turn.
 
-Development & Troubleshooting Notes
-This section documents key technical challenges encountered and the solutions implemented, as required by the assessment criteria.
+Medium: Monster moves 2 spaces per turn.
 
-1. CSS Hexagon Creation
-Problem: HTML and CSS do not have a native hexagon shape. Creating one required a non-trivial workaround.
+Hard: Monster moves 3 spaces per turn.
 
-Solution: A single hexagon was constructed from a rectangular div element and its two pseudo-elements (::before and ::after).
+Smarter Monster AI: The monster's movement logic was updated. It now takes multiple, intelligent steps in a single turn, creating a genuine threat and requiring the player to think ahead. This was implemented by looping the pathfinding logic based on the selected difficulty.
 
-The main .hexagon class styles the rectangular center.
-
-The ::before and ::after pseudo-elements are styled into triangles using CSS borders and positioned absolutely at the top and bottom of the main div.
-
-This combination creates the illusion of a perfect hexagon.
-
-2. Grid Generation and Alignment
-Problem: A standard grid of div elements would result in gaps and misalignment. A honeycomb pattern requires rows to be staggered and overlap vertically.
-
-Solution:
-
-Staggering: During the JavaScript grid generation loop, a check is performed on the row number (row % 2 !== 0). For every odd row, a margin-left is applied to shift the entire row to the right by half a hexagon's width.
-
-Vertical Overlap: The margin property on the .hexagon class was given a negative top/bottom value (-13.86px). This was calculated to be half the height of the triangular pseudo-elements, pulling the rows together vertically to eliminate any gaps.
-
-3. Hexagon Neighbor Logic
-Problem: The most complex challenge was correctly identifying the six neighbors of any given hexagon for the player movement feature. Due to the staggered grid, the relative coordinates of neighbors are different for hexagons in even rows versus odd rows.
-
-Solution:
-
-A getNeighborOffsets function was created.
+UI Overhaul: The UI flow was changed to include a start screen for difficulty selection. The main game grid is now hidden until a level is chosen.
 
 Inside this function, a conditional (ternary) operator checks if the player's current row is even or odd.
 
