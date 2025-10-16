@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monster Mayhem</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Monster Mayhem</h1>
+
+    <!-- Difficulty Selection Screen -->
+    <div id="difficulty-selection">
+        <h2>Select Difficulty</h2>
+        <div class="difficulty-buttons">
+            <button class="difficulty-btn" data-difficulty="1">Easy</button>
+            <button class="difficulty-btn" data-difficulty="2">Medium</button>
+            <button class="difficulty-btn" data-difficulty="3">Hard</button>
+        </div>
+    </div>
+
+    <!-- Game Board -->
+    <div id="grid-container" class="hidden"></div>
+
+    <!-- Game Over Overlay -->
+    <div id="game-over-overlay" class="hidden">
+        <div id="game-over-message">
+            <h2>Game Over!</h2>
+            <p>The monster caught you!</p>
+            <button id="restart-button">Play Again</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
